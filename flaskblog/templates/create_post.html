@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <h1>{{ legend }}</h1>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.title.label() }}
+        {{ form.title }} <br>
+        {% if form.title.errors %}
+            {%for error in form.title.errors%}
+                <div style="color:red;">
+                    {{error}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {{ form.content.label() }}
+        {{ form.content }} <br>
+        {% if form.content.errors %}
+            {%for error in form.content.errors%}
+                <div style="color:red;">
+                    {{error}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {{ form.submit() }}
+    </form>
+    </div>
+{% endblock content %}

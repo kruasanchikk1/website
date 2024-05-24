@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            {{ form.email.label() }}
+            {{ form.email }} <br>
+            {% if form.email.errors %}
+                {%for error in form.email.errors%}
+                    <div style="color:red;">
+                        {{error}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {{ form.password.label() }}
+            {{ form.password }} <br>
+            {% if form.password.errors %}
+                {%for error in form.password.errors%}
+                    <div style="color:red;">
+                        {{error}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {{ form.remember.label }}
+            {{ form.remember }} <br>
+            <a href="{{ url_for('users.reset_request') }}">Forgot password?</a> <br>
+            {{ form.submit() }}
+        </form>
+    </div>
+{% endblock content %}
